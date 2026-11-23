@@ -1,5 +1,6 @@
 import { about } from '../content/site'
 import { useReveal } from '../hooks/useReveal'
+import { assetUrl } from '../lib/assetUrl'
 
 export function About() {
   const ref = useReveal<HTMLElement>()
@@ -26,7 +27,7 @@ export function About() {
           </ul>
         </div>
         <figure className="about-media rv">
-          <img src={about.portrait} alt={about.portraitAlt} width={1024} height={1280} loading="lazy" decoding="async" />
+          <img src={assetUrl(about.portrait)} alt={about.portraitAlt} width={1024} height={1280} loading="lazy" decoding="async" />
           <figcaption className="meta">{about.portraitCaption}</figcaption>
         </figure>
       </div>

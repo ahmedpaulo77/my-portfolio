@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects, studies } from '../content/site'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 import { GlassEdge } from './GlassEdge'
+import { assetUrl } from '../lib/assetUrl'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 // Tuned by hand: slow leave, steep middle, long soft landing — named eases read as canned next to the roll.
@@ -17,7 +18,7 @@ export function HorizontalGallery() {
   const reduced = usePrefersReducedMotion()
 
   const items = projects.slice(0, 5).map((p) => ({
-    src: p.cover, alt: p.coverAlt, caption: `${p.title} — ${p.category}`,
+    src: assetUrl(p.cover), alt: p.coverAlt, caption: `${p.title} — ${p.category}`,
   }))
 
   useLayoutEffect(() => {

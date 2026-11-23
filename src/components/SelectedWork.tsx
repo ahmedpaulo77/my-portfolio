@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { CSSProperties } from 'react'
 import { projects } from '../content/site'
 import { useWipe } from '../lib/transition'
+import { assetUrl } from '../lib/assetUrl'
 
 export function SelectedWork() {
   const { navigateWithWipe } = useWipe()
@@ -50,7 +51,7 @@ export function SelectedWork() {
                 </span>
                 <figure className="work-row-media" aria-hidden="true">
                   <img
-                    src={p.cover}
+                    src={assetUrl(p.cover)}
                     alt=""
                     width={1536}
                     height={1024}
@@ -76,7 +77,7 @@ export function SelectedWork() {
                 <img
                   key={p.slug}
                   className={i === active ? 'is-active' : undefined}
-                  src={p.cover}
+                  src={assetUrl(p.cover)}
                   alt=""
                   width={1536}
                   height={1024}
