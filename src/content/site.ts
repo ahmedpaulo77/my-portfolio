@@ -70,8 +70,8 @@ export const about = {
     { period: 'Platforms', item: 'Khamsat · Mostaql · LinkedIn' },
     { period: 'Shipped', item: '14+ live projects — SaaS, booking, clinic & store websites' },
   ],
-  portrait: '/images/about-studio.jpg',
-  portraitAlt: 'Developer workspace with a large monitor showing interface sketches',
+  portrait: '/images/about-dev.jpg',
+  portraitAlt: 'MacBook Pro with code editor open showing JavaScript and GSAP animation code',
   portraitCaption: 'Working remotely from Egypt',
 }
 

@@ -17,7 +17,7 @@ export function SelectedWork() {
     <section className="work-section" id="work">
       <div className="section-head">
         <h2>Selected Work</h2>
-        <span className="meta">{projects.length} projects — 2025/26</span>
+        <span className="meta">{projects.length} projects</span>
       </div>
 
       <div className="work-stage">
@@ -47,7 +47,6 @@ export function SelectedWork() {
                 </h3>
                 <span className="work-row-meta meta">
                   <span>{p.category}</span>
-                  <span>{p.year}</span>
                 </span>
                 <figure className="work-row-media" aria-hidden="true">
                   <img
