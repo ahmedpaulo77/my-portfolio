@@ -725,6 +725,50 @@ export const projects: Project[] = [
     link: 'https://ahmedpaulo77.github.io/law/',
   },
   {
+    slug: 'savor',
+    title: 'SAVOR',
+    category: 'Restaurant website',
+    year: '2025',
+    role: 'React.js · TypeScript · Interactive menu',
+    summary:
+      'A restaurant website with an interactive menu sorted by category and price, table reservation system, and an about section.',
+    cover: '/images/sites/savor-cover.jpg',
+    coverAlt: 'SAVOR restaurant interior with dark wood and warm lighting',
+    intro:
+      'SAVOR needed a site that works as both a menu and a reservation tool — without one getting in the way of the other.',
+    challenge:
+      'Present a full menu with categories and prices in a way that feels easy to browse on a phone, while keeping table booking always one tap away.',
+    approach: [
+      {
+        heading: 'Interactive menu',
+        body: 'Dishes are grouped by category with prices clearly shown — visitors can filter by section without leaving the page.',
+      },
+      {
+        heading: 'Table reservation',
+        body: 'A simple booking form lets guests pick a date, time and party size directly from the site.',
+      },
+      {
+        heading: 'About the restaurant',
+        body: 'A dedicated section tells the story of the place — atmosphere, philosophy and what makes it worth the visit.',
+      },
+    ],
+    outcome:
+      'A clean restaurant front end that handles menu browsing, reservations and brand storytelling in one flow.',
+    images: [
+      {
+        src: '/images/sites/savor-detail.jpg',
+        alt: 'SAVOR signature ribs dish on a wooden board',
+        caption: 'Menu items presented with photography and clear pricing.',
+      },
+      {
+        src: '/images/sites/savor-detail2.jpg',
+        alt: 'SAVOR salmon dish with vegetables',
+        caption: 'Category filters keep the menu scannable.',
+      },
+    ],
+    link: 'https://ahmedpaulo77.github.io/restaurant/#/',
+  },
+  {
     slug: 'forme',
     title: 'FORME',
     category: 'Fashion concept store',
