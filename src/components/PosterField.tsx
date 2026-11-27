@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects } from '../content/site'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { assetUrl } from '../lib/assetUrl'
 import { createPosterAtlas } from '../lib/posterAtlas'
 import { createPosterField } from '../lib/posterField'
 
@@ -158,7 +159,7 @@ export function PosterField({ section, pin }: Props) {
         <div className="poster-fallback">
           {projects.map(project => (
             <figure key={project.slug}>
-              <img src={project.cover} alt={project.coverAlt} width={1536} height={1024} loading="lazy" />
+              <img src={assetUrl(project.cover)} alt={project.coverAlt} width={1536} height={1024} loading="lazy" />
             </figure>
           ))}
         </div>

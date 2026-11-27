@@ -4,6 +4,7 @@ import { CustomEase } from 'gsap/CustomEase'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects, studies } from '../content/site'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { assetUrl } from '../lib/assetUrl'
 import { GlassEdge } from './GlassEdge'
 
 gsap.registerPlugin(ScrollTrigger, CustomEase)
@@ -17,7 +18,7 @@ export function HorizontalGallery() {
   const reduced = usePrefersReducedMotion()
 
   const items = projects.slice(0, 5).map((p) => ({
-    src: p.cover, alt: p.coverAlt, caption: `${p.title} — ${p.category}`,
+    src: assetUrl(p.cover), alt: p.coverAlt, caption: `${p.title} — ${p.category}`,
   }))
 
   useLayoutEffect(() => {

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { getProject, nextProject, projects } from '../content/site'
 import { useReveal } from '../hooks/useReveal'
+import { assetUrl } from '../lib/assetUrl'
 import { useWipe } from '../lib/transition'
 import { Contact } from '../components/Contact'
 
@@ -41,7 +42,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
         </header>
 
         <div className="case-cover">
-          <img src={project.cover} alt={project.coverAlt} width={1536} height={1024} decoding="async" />
+          <img src={assetUrl(project.cover)} alt={project.coverAlt} width={1536} height={1024} decoding="async" />
         </div>
 
         <div className="case-body">
@@ -96,7 +97,7 @@ export default function CaseStudy({ slug }: { slug: string }) {
         <div className="case-images">
           {project.images.map((img) => (
             <figure className="rv" key={img.src}>
-              <img src={img.src} alt={img.alt} width={1536} height={1024} loading="lazy" decoding="async" />
+              <img src={assetUrl(img.src)} alt={img.alt} width={1536} height={1024} loading="lazy" decoding="async" />
               <figcaption className="meta">{img.caption}</figcaption>
             </figure>
           ))}
