@@ -2,7 +2,6 @@ import { useState } from 'react'
 import type { CSSProperties } from 'react'
 import { projects } from '../content/site'
 import { useWipe } from '../lib/transition'
-import { assetUrl } from '../lib/assetUrl'
 
 export function SelectedWork() {
   const { navigateWithWipe } = useWipe()
@@ -50,14 +49,7 @@ export function SelectedWork() {
                   <span>{p.category}</span>
                 </span>
                 <figure className="work-row-media" aria-hidden="true">
-                  <img
-                    src={assetUrl(p.cover)}
-                    alt=""
-                    width={1536}
-                    height={1024}
-                    loading={i < 2 ? 'eager' : 'lazy'}
-                    decoding="async"
-                  />
+                  <img src={p.cover} alt="" width={1536} height={1024} loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
                 </figure>
               </a>
             </li>
@@ -74,16 +66,7 @@ export function SelectedWork() {
           >
             <div className="work-preview-frame">
               {projects.map((p, i) => (
-                <img
-                  key={p.slug}
-                  className={i === active ? 'is-active' : undefined}
-                  src={assetUrl(p.cover)}
-                  alt=""
-                  width={1536}
-                  height={1024}
-                  loading={i < 2 ? 'eager' : 'lazy'}
-                  decoding="async"
-                />
+                <img key={p.slug} className={i === active ? 'is-active' : undefined} src={p.cover} alt="" width={1536} height={1024} loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
               ))}
             </div>
           </a>

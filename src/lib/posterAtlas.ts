@@ -1,7 +1,5 @@
 import { projects } from '../content/site'
 
-const base = import.meta.env.BASE_URL.replace(/\/$/, '')
-
 export async function createPosterAtlas(): Promise<{
   canvas: HTMLCanvasElement
   count: number
@@ -14,7 +12,7 @@ export async function createPosterAtlas(): Promise<{
   const tileHeight = 768
   const gutter = 2
 
-  const sources = projects.map((project) => `${base}/images/sites/${project.slug}-wall.webp`)
+  const sources = projects.map((project) => `/images/sites/${project.slug}-wall.webp`)
   const count = sources.length
 
   const posters = await Promise.all(
