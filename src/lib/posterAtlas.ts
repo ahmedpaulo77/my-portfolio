@@ -1,5 +1,7 @@
 import { projects } from '../content/site'
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 export async function createPosterAtlas(): Promise<{
   canvas: HTMLCanvasElement
   count: number
@@ -12,7 +14,12 @@ export async function createPosterAtlas(): Promise<{
   const tileHeight = 768
   const gutter = 2
 
-  const sources = projects.map((project) => `/images/sites/${project.slug}-wall.webp`)
+  const sources = projects.map((project) => {
+    // SAVOR ships JPEGs while the rest ship WebP — derive the real extension
+    // from the project cover instead of assuming ".webp".
+    const ext = project.cover.match(/\.[a-z0-9]+$/i)?.[0] || '.webp'
+    return `${base}/images/sites/${project.slug}-wall${ext}`
+  })
   const count = sources.length
 
   const posters = await Promise.all(
@@ -22,10 +29,20 @@ export async function createPosterAtlas(): Promise<{
       image.src = src
       try {
         await image.decode()
+        return image
       } catch {
-        throw new Error(`Unable to decode poster image: ${src}`)
+        // Fall back to a blank tile instead of breaking the whole poster field.
+        console.warn(`Unable to decode poster image: ${src}`)
+        const tile = document.createElement('canvas')
+        tile.width = 16
+        tile.height = 24
+        const c = tile.getContext('2d')
+        if (c) {
+          c.fillStyle = '#0b0c0e'
+          c.fillRect(0, 0, tile.width, tile.height)
+        }
+        return tile as unknown as HTMLImageElement
       }
-      return image
     }),
   )
 
@@ -47,13 +64,15 @@ export async function createPosterAtlas(): Promise<{
   posters.forEach((image, index) => {
     const x = (index % columns) * tileWidth + gutter
     const y = Math.floor(index / columns) * tileHeight + gutter
-    const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight)
+    const naturalWidth = image.naturalWidth || (image as unknown as HTMLCanvasElement).width
+    const naturalHeight = image.naturalHeight || (image as unknown as HTMLCanvasElement).height
+    const scale = Math.max(width / naturalWidth, height / naturalHeight)
     const sourceWidth = width / scale
     const sourceHeight = height / scale
     ctx.drawImage(
       image,
-      (image.naturalWidth - sourceWidth) / 2,
-      (image.naturalHeight - sourceHeight) / 2,
+      (naturalWidth - sourceWidth) / 2,
+      (naturalHeight - sourceHeight) / 2,
       sourceWidth,
       sourceHeight,
       x,
